@@ -9,7 +9,7 @@ plugins:
 
 <slide class="bg-white aligncenter">
 
-# ![NGIN](/NG.png)
+# ![NGIN](/webpaper/NG.png)
 
 # 基於區塊鏈的分佈式應用引擎生態系統 {.text-landing.text-shadow}
 
@@ -61,7 +61,7 @@ plugins:
 
 :::div {.content-right}
 
-![](/davinci.png)
+![](/webpaper/davinci.png)
 
 :::card {.quote}
 
