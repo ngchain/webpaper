@@ -1,3 +1,4 @@
-module.exports = () => ({
+module.exports = {
+    baseUrl: '/webpaper',
     outputDir: 'docs',
-});
+};
