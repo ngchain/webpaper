@@ -1,4 +1,4 @@
 module.exports = {
-    baseUrl: '/webpaper',
+    baseUrl: '/',
     outputDir: 'docs',
 };
