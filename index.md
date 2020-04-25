@@ -1,5 +1,5 @@
 title: NGIN - 基於區塊鏈的分佈式應用引擎生態系統
-speaker: NGO Team
+speaker: NGO
 url: https://github.com/ngchain
 prismTheme: tomorrow
 plugins:
@@ -13,10 +13,7 @@ plugins:
 
 # 基於區塊鏈的分佈式應用引擎生態系統 {.text-landing.text-shadow}
 
-
-
 ---
-
 
 **NGIN** is pronounced "engine" {.text-intro}
 
@@ -57,6 +54,8 @@ plugins:
 - Schnorr簽名算法，支持聯合簽名（Multi-Sig）
 
 - 基於Fee的主網幣銷毀策略，維持主鏈上供需平衡保證價值
+
+- Swagger restful接口
 :::
 
 :::div {.content-right}
@@ -130,6 +129,8 @@ ngCore目前接口協議尚未穩定，正在完成從jsonrpc-v2到swagger-restf
 
 :::div {.content-left}
 
+![](/preview_light.png)
+
 :::
 
 :::div {.content-right}
@@ -143,7 +144,11 @@ Hawkhover是針對NGIN類型的多平臺數字錢包應用，基於dart與flutte
 目前UI已經頁面邏輯已經完成，由於ngCore接口未穩定因此仍需適配
 :::
 
+<slide class="bg-white aligncenter">
 
+:::div {.content-right}
+![](/preview_dark.png)
+:::
 
 <slide class="bg-white aligncenter">
 
@@ -151,8 +156,11 @@ Hawkhover是針對NGIN類型的多平臺數字錢包應用，基於dart與flutte
 
 --- 
 
-[WIP]
-
+- NGIN的目標和BTC不同，并非創建任何數字貨幣或者支付手段。NGIN的目標是建立基於區塊鏈的可信應用生態
+- NGIN使用數字賬戶，更便捷
+- NGIN使用Schnorr簽名，Bitcoin使用ECDSA: [Schnorr vs ECDSA](https://bitcoin.stackexchange.com/questions/77234/schnorr-vs-ecdsa)
+- NGIN使用Fee的銷毀保證主網幣NG的價值，并不會像BTC一樣減產
+- ... 
 
 
 <slide class="bg-white aligncenter">
@@ -161,4 +169,9 @@ Hawkhover是針對NGIN類型的多平臺數字錢包應用，基於dart與flutte
 
 ---
 
-[WIP]
+- NGIN的目標和ETH不同，并非創建任何代幣生態。NGIN的目標是建立基於區塊鏈的可信應用生態
+- NGIN更建議部署非代幣相關的分佈式應用 - 例如爬蟲，存儲，網站等
+- NGIN使用數字賬戶，更便捷
+- NGIN使用Schnorr簽名，Ethereum使用ECDSA: [Schnorr vs ECDSA](https://bitcoin.stackexchange.com/questions/77234/schnorr-vs-ecdsa)
+- 不同於EVM，NGIN内嵌更加通用的WASM虛擬機，可以使用asm.js, rust, kotlin, c, c++等高級語言進行編程
+- ...
