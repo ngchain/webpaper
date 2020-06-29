@@ -61,26 +61,24 @@ plugins:
 ---
 
 ```mermaid
-sequenceDiagram
-    WASM ->> Account: apply account state.
+sequenceDiagram    
+    Address ->> Account: maintain the balance(recv)
+    Account ->> Address: consume the balance(send)
+    WebAssembly ->> Account: apply account state.
     Account->>Sheet: constitute
-    Sheet->>Block: summarize and hash.
-    Block->>Chain: link up
-    Block->>P2P: broadcast
-
-    Chain->>P2P: sync
-
-    loop bcast
-        P2P->>P2P: recv chain and txs
-    end
-
-    P2P->>Chain: recv sync
-
-    P2P->>Block: recv block
-    Block->>Sheet: apply new txs and check all account states
-    Sheet->>Account: apply transaction, assign and append tx
-    Account->>WASM: call event
-
+    Tx->>State: Verify and Apply
+    State->>Sheet: generate
+    Sheet->>P2P: Sync or tigger chain fork
+    Tx->>Block: Compound
+    Tx->>P2P: Broadcast
+    Block->>Chain: Link up
+    Block->>P2P: Broadcast
+    Chain-->P2P: Sync and fork
+    Chain->>State: Verifiy blocks
+    Block->>State: Apply new Txs
+    Sheet->>Account: Apply transaction, assign and append tx
+    Account->>WebAssembly: Edit backend(Assign, Append)
+    Tx ->> WebAssembly: Tigger events(Transaction)
 ```
 
 <slide class="bg-white aligncenter">
@@ -151,7 +149,7 @@ Hawkhover will be released after ngcore's beta period
 
 <slide class="bg-white aligncenter">
 
-## ## Diff between **ETH** & NGIN
+## Diff between **ETH** & NGIN
 
 ---
 
@@ -164,17 +162,35 @@ Hawkhover will be released after ngcore's beta period
 
 <slide class="bg-white aligncenter">
 
+## Life circle of a WASM contract
+
 ---
 
 ```mermaid
-stateDiagram
-    [*] --> Still
-    Still --> [*]
+stateDiagram-v2
+    [*] --> LifeCircle: register a account
+    state LifeCircle {
+        [*] --> WebAssemblyVM: deploy with assignTx(from owner)
+        WebAssemblyVM --> EmptyContract: erase all with assignTx(from owner)
+        AccountA-->WebAssemblyVM: effect the context
+        WebAssemblyVM-->AccountA: get the new context
+        AccountB-->WebAssemblyVM: can also effect the context
+        AccountC-->WebAssemblyVM: get failed to assign or append the contract
+        WebAssemblyVM --> [*]: erase with assignTx(from owner)
+    }
+```
 
-    Still --> Moving
-    Moving --> Still
-    Moving --> Crash
-    Crash --> [*]
+<slide class="bg-white aligncenter">
 
-// not supported by nodeppt yet
+## Steps to build and deploy a WASM contract
+
+---
+
+```mermaid
+stateDiagram-v2
+    [*] --> Rust/C: write source code
+    Rust/C --> WebAssebmlyBinaryFile: compile with the correct toolchain
+    WebAssebmlyBinaryFile --> AccountContract: upload the binary to the NGIN network with wallet toolset
+    AccountContract --> InitializedVM: some maybe need to initialize the context for serving 
+    AccountContract --> InitializedVM: some dont need any action
 ```

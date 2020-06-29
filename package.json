@@ -1,0 +1,12 @@
+{
+  "name": "webpaper",
+  "version": "0.0.2",
+  "repository": "https://github.com/ngchain/webpaper.git",
+  "author": "Command <maoxs2@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "install": "yarn global add nodeppt",
+    "build": "nodeppt build index.md",
+    "serve": "nodeppt serve index.md"
+  }
+}

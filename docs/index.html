@@ -1,35 +1,43 @@
-<!doctype html><html><head><meta charset=UTF-8><title>NGIN - Decentrailized Application Engine based on Blockchain Ecosystem - By NGO</title><link rel=stylesheet href=//cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css><link rel=stylesheet href=//cdn.staticfile.org/prism/1.15.0/themes/prism.min.css><link rel=stylesheet href=//cdn.staticfile.org/KaTeX/0.10.0-rc.1/katex.min.css><link rel=stylesheet href=//cdn.staticfile.org/prism/1.15.0/themes/prism-tomorrow.min.css><link rel=stylesheet href=//cdn.staticfile.org/KaTeX/0.5.1/katex.min.css><link href=./css/chunk-vendors.4e4765ff.css rel=stylesheet></head><body><div><article id=webslides><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><h1><img src=/NG.png alt=NGIN></h1><h1 class=text-shadow>Decentrailized Application <strong>Engine</strong></h1><h1 class=text-shadow>based on Blockchain Ecosystem</h1><hr><p class=text-intro><strong>NGIN</strong> is pronounced &quot;engine&quot;</p><p><a href=https://github.com/ngchain class="button ghost" target=_blank><i class="fa fa-github"></i> Github</a> <a href=https://code.ngin.cash class="button ghost" target=_blank><i class="fa fa-git"></i> Gitea</a> <a href=https://github.com/ngchain/ngcore class="button ghost" target=_blank><i class="fa fa-server"></i> Deamon</a> <a href=https://github.com/ngchain/hawkhover class="button ghost" target=_blank><i class="fa fa-money"></i> Wallet</a></p></div></section><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><div class=content-left><h2 class="text text-shadow">Features</h2><hr><div class="card-50 bg-white"><ul><li><strong>Fast ignition</strong></li><li>Less, or <strong>no storage cost</strong>(mem only)</li><li>With <strong>humanizing</strong> account model, users can send tx with <strong>memorable short number</strong></li><li><strong>High security</strong> with Sheet and Vault(Block) model</li><li>Powerful and scalable types of tx</li><li>Support <strong>Multi-Tx</strong>, sending coins to different recipants in the same time</li><li>Powerful <strong>WebAssembly</strong> VM support based on account state(contract)</li><li>Contract is <strong>more maintainable</strong> than ethereum</li><li><strong>Libp2p(ipfs)</strong> powered p2p networking</li><li>Available <strong>anonymous</strong> address for saving balance</li><li>Using the <strong>schnorr signature</strong>, allowing Multi-Sig when sending and receiving</li><li><strong>Fee Destory Policy</strong> keeps the mainnet coin NG's value</li><li>Using swagger style <strong>restful API</strong>, be friendly to the developers</li></ul></div></div><p><img src=/davinci.png alt=""></p><blockquote><p>&quot;<strong>NGIN</strong> is the best public PoW chain yet.” <cite>Leonardo da Vinci</cite></p></blockquote></div></section><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><h2 class=text-shadow>Structure</h2><hr><div class=embed><pre class="lang-mermaid no-style">sequenceDiagram
-    WASM ->> Account: apply account state.
+<!doctype html><html><head><meta charset=UTF-8><title>NGIN - Decentrailized Application Engine based on Blockchain Ecosystem - By NGO</title><link rel=stylesheet href=https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css><link rel=stylesheet href=https://cdn.staticfile.org/prism/1.15.0/themes/prism.min.css><link rel=stylesheet href=https://cdn.staticfile.org/KaTeX/0.10.0-rc.1/katex.min.css><link rel=stylesheet href=https://cdn.staticfile.org/prism/1.15.0/themes/prism-tomorrow.min.css><link rel=stylesheet href=https://cdn.staticfile.org/KaTeX/0.5.1/katex.min.css><link href=./css/chunk-vendors.4e4765ff.css rel=stylesheet></head><body><div><article id=webslides><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><h1><img src=/NG.png alt=NGIN></h1><h1 class=text-shadow>Decentrailized Application <strong>Engine</strong></h1><h1 class=text-shadow>based on Blockchain Ecosystem</h1><hr><p class=text-intro><strong>NGIN</strong> is pronounced &quot;engine&quot;</p><p><a href=https://github.com/ngchain class="button ghost" target=_blank><i class="fa fa-github"></i> Github</a> <a href=https://code.ngin.cash class="button ghost" target=_blank><i class="fa fa-git"></i> Gitea</a> <a href=https://github.com/ngchain/ngcore class="button ghost" target=_blank><i class="fa fa-server"></i> Deamon</a> <a href=https://github.com/ngchain/hawkhover class="button ghost" target=_blank><i class="fa fa-money"></i> Wallet</a></p></div></section><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><div class=content-left><h2 class="text text-shadow">Features</h2><hr><div class="card-50 bg-white"><ul><li><strong>Fast ignition</strong></li><li>Less, or <strong>no storage cost</strong>(mem only)</li><li>With <strong>humanizing</strong> account model, users can send tx with <strong>memorable short number</strong></li><li><strong>High security</strong> with Sheet and Vault(Block) model</li><li>Powerful and scalable types of tx</li><li>Support <strong>Multi-Tx</strong>, sending coins to different recipants in the same time</li><li>Powerful <strong>WebAssembly</strong> VM support based on account state(contract)</li><li>Contract is <strong>more maintainable</strong> than ethereum</li><li><strong>Libp2p(ipfs)</strong> powered p2p networking</li><li>Available <strong>anonymous</strong> address for saving balance</li><li>Using the <strong>schnorr signature</strong>, allowing Multi-Sig when sending and receiving</li><li><strong>Fee Destory Policy</strong> keeps the mainnet coin NG's value</li><li>Using swagger style <strong>restful API</strong>, be friendly to the developers</li></ul></div></div><p><img src=/davinci.png alt=""></p><blockquote><p>&quot;<strong>NGIN</strong> is the best public PoW chain yet.” <cite>Leonardo da Vinci</cite></p></blockquote></div></section><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><h2 class=text-shadow>Structure</h2><hr><div class=embed><pre class="lang-mermaid no-style">sequenceDiagram    
+    Address ->> Account: maintain the balance(recv)
+    Account ->> Address: consume the balance(send)
+    WebAssembly ->> Account: apply account state.
     Account->>Sheet: constitute
-    Sheet->>Block: summarize and hash.
-    Block->>Chain: link up
-    Block->>P2P: broadcast
+    Tx->>State: Verify and Apply
+    State->>Sheet: generate
+    Sheet->>P2P: Sync or tigger chain fork
+    Tx->>Block: Compound
+    Tx->>P2P: Broadcast
+    Block->>Chain: Link up
+    Block->>P2P: Broadcast
+    Chain-->P2P: Sync and fork
+    Chain->>State: Verifiy blocks
+    Block->>State: Apply new Txs
+    Sheet->>Account: Apply transaction, assign and append tx
+    Account->>WebAssembly: Edit backend(Assign, Append)
+    Tx ->> WebAssembly: Tigger events(Transaction)
+</pre></div></div></section><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><div class=content-left><h2>ngCore</h2><hr><p>ngCore is the third daemon on NGIN。</p><p>Concurrently, the ngBiz is a new try for union chain based on ngCore's codebase, within which we use PBFT replacing PoW consensus.</p></div><div class=content-right><p>The first two versions are ngind(based on go-ethereum) and ngd/ngdaemon(published on internal git repo not github) Initially, NGIN project was aiming to build <strong>an internet serach engine</strong>(like google) ecosystem based on blockchain But ngind was soon deprecated due to the origin Russian team's plan. And then ngd/ngdaemon's team continued their project but then it was also deprecated before releasing because of the team broke up. Some codes of ngd/ngdaemon are inherited by ngcore when ngcore starts, but now all be placed by new codes.</p><p>From the view of codebase, ngcore is <strong>not a fork of any project</strong>. Currently, ngcore has implemented all core functions of a blockchain public chain, like p2p network protocol, memory-safe VM based on WebAssembly, etc.</p><p>Now, ngcore is on alpha period.</p></div><div></div></div></section><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><div class=content-left><p><img src=/preview_light.png alt=""></p></div><div class=content-right><h3>Hawkhover</h3><hr><p>Hawkhover a multi-platform GUI wallet for NGIN daemon, which is designed by dart and flutter and can be installed on Windows/Linux desktop, Android and iOS.</p><p>Hawkhover will be released after ngcore's beta period</p></div></div></section><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><div class=content-right><p><img src=/preview_dark.png alt=""></p></div></div></section><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><h2>Diff between <strong>BTC</strong> &amp; NGIN</h2><hr><ul><li>Goal of NGIN, not creating any crypto currency or building a new payment method, is maintaining a decentrialized application engine with reliable blockchain ecosystem</li><li>Using number account, not garbled string. So more convenient.</li><li>Using Schnorr signature，not ECDSA:: <a href=https://bitcoin.stackexchange.com/questions/77234/schnorr-vs-ecdsa target=_blank>Schnorr vs ECDSA</a></li><li>No half-life period, NGIN using Fee Destory Policy to keep the value of mainnet coin.</li><li>...</li></ul></div></section><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><h2>Diff between <strong>ETH</strong> &amp; NGIN</h2><hr><ul><li>Goal of NGIN, not creating token ecosystem, is maintaining a decentrialized application engine with reliable blockchain ecosystem</li><li>NGIN suggests non-financial decentralized applications like spiders, storages and webservices etc.</li><li>Using number account, not garbled string. So more convenient.</li><li>Using Schnorr signature，not ECDSA:: <a href=https://bitcoin.stackexchange.com/questions/77234/schnorr-vs-ecdsa target=_blank>Schnorr vs ECDSA</a></li><li>No EVM，and NGIN assembles more common WebAssembly VM, with which developers can create their app with asm.js, rust, kotlin, c, c++ etc.</li><li>...</li></ul></div></section><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><h2>Life circle of a WASM contract</h2><hr><div class=embed><pre class="lang-mermaid no-style">stateDiagram-v2
+    [*] --> LifeCircle: register a account
+    state LifeCircle {
+        [*] --> WebAssemblyVM: deploy with assignTx(from owner)
+        WebAssemblyVM --> EmptyContract: erase all with assignTx(from owner)
+        AccountA-->WebAssemblyVM: effect the context
+        WebAssemblyVM-->AccountA: get the new context
+        AccountB-->WebAssemblyVM: can also effect the context
+        AccountC-->WebAssemblyVM: get failed to assign or append the contract
+        WebAssemblyVM --> [*]: erase with assignTx(from owner)
+    }
+</pre></div></div></section><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><h2>Steps to build and deploy a WASM contract</h2><hr><div class=embed><pre class="lang-mermaid no-style">stateDiagram-v2
+    [*] --> Rust/C: write source code
+    Rust/C --> WebAssebmlyBinaryFile: compile with the correct toolchain
+    WebAssebmlyBinaryFile --> AccountContract: upload the binary to the NGIN network with wallet toolset
+    AccountContract --> InitializedVM: some maybe need to initialize the context for serving 
+    AccountContract --> InitializedVM: some dont need any action
+</pre></div></div></section></article></div><script src=https://cdn.staticfile.org/echarts/4.8.0/echarts.min.js></script><script src=https://cdn.staticfile.org/mermaid/8.5.2/mermaid.min.js></script><script>mermaid.startOnLoad = false;</script><script>window.pluginsOptions = {}
 
-    Chain->>P2P: sync
 
-    loop bcast
-        P2P->>P2P: recv chain and txs
-    end
 
-    P2P->>Chain: recv sync
-
-    P2P->>Block: recv block
-    Block->>Sheet: apply new txs and check all account states
-    Sheet->>Account: apply transaction, assign and append tx
-    Account->>WASM: call event
-
-</pre></div></div></section><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><div class=content-left><h2>ngCore</h2><hr><p>ngCore is the third daemon on NGIN。</p><p>Concurrently, the ngBiz is a new try for union chain based on ngCore's codebase, within which we use PBFT replacing PoW consensus.</p></div><div class=content-right><p>The first two versions are ngind(based on go-ethereum) and ngd/ngdaemon(published on internal git repo not github) Initially, NGIN project was aiming to build <strong>an internet serach engine</strong>(like google) ecosystem based on blockchain But ngind was soon deprecated due to the origin Russian team's plan. And then ngd/ngdaemon's team continued their project but then it was also deprecated before releasing because of the team broke up. Some codes of ngd/ngdaemon are inherited by ngcore when ngcore starts, but now all be placed by new codes.</p><p>From the view of codebase, ngcore is <strong>not a fork of any project</strong>. Currently, ngcore has implemented all core functions of a blockchain public chain, like p2p network protocol, memory-safe VM based on WebAssembly, etc.</p><p>Now, ngcore is on alpha period.</p></div><div></div></div></section><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><div class=content-left><p><img src=/preview_light.png alt=""></p></div><div class=content-right><h3>Hawkhover</h3><hr><p>Hawkhover a multi-platform GUI wallet for NGIN daemon, which is designed by dart and flutter and can be installed on Windows/Linux desktop, Android and iOS.</p><p>Hawkhover will be released after ngcore's beta period</p></div></div></section><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><div class=content-right><p><img src=/preview_dark.png alt=""></p></div></div></section><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><h2>Diff between <strong>BTC</strong> &amp; NGIN</h2><hr><ul><li>Goal of NGIN, not creating any crypto currency or building a new payment method, is maintaining a decentrialized application engine with reliable blockchain ecosystem</li><li>Using number account, not garbled string. So more convenient.</li><li>Using Schnorr signature，not ECDSA:: <a href=https://bitcoin.stackexchange.com/questions/77234/schnorr-vs-ecdsa target=_blank>Schnorr vs ECDSA</a></li><li>No half-life period, NGIN using Fee Destory Policy to keep the value of mainnet coin.</li><li>...</li></ul></div></section><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><h2>## Diff between <strong>ETH</strong> &amp; NGIN</h2><hr><ul><li>Goal of NGIN, not creating token ecosystem, is maintaining a decentrialized application engine with reliable blockchain ecosystem</li><li>NGIN suggests non-financial decentralized applications like spiders, storages and webservices etc.</li><li>Using number account, not garbled string. So more convenient.</li><li>Using Schnorr signature，not ECDSA:: <a href=https://bitcoin.stackexchange.com/questions/77234/schnorr-vs-ecdsa target=_blank>Schnorr vs ECDSA</a></li><li>No EVM，and NGIN assembles more common WebAssembly VM, with which developers can create their app with asm.js, rust, kotlin, c, c++ etc.</li><li>...</li></ul></div></section><section slide class="slide bg-white aligncenter"><div class=wrap wrap=true><hr><div class=embed><pre class="lang-mermaid no-style">stateDiagram
-    [*] --> Still
-    Still --> [*]
-
-    Still --> Moving
-    Moving --> Still
-    Moving --> Crash
-    Crash --> [*]
-
-// not supported by nodeppt yet
-</pre></div></div></section></article></div><script src=//cdn.staticfile.org/echarts/4.1.0-release/echarts.min.js></script><script src=//cdn.staticfile.org/mermaid/8.0.0/mermaid.min.js></script><script>mermaid.startOnLoad = false;</script><script>window.pluginsOptions = {}
-
+    window.webslidesOptions = {}
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -38,9 +46,18 @@ document.addEventListener('DOMContentLoaded', () => {
         isPrintMode = true;
         WebSlides.registerPlugin('scroll', function(){});
     }
-    const ws = new WebSlides({
+    const wsOptions = {
         loop: false
-    })
+    };
+    if(window.webslidesOptions){
+        for (let i in webslidesOptions){
+            if(webslidesOptions.hasOwnProperty(i)){
+                wsOptions[i] = webslidesOptions[i];
+            }
+        }
+    }
+    const ws = new WebSlides(wsOptions)
+
     window.wsInstance = ws;
     if(isPrintMode){
         ws.slides.forEach(s=>s.show())
