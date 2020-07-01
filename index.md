@@ -33,19 +33,21 @@ plugins:
 ---
 
 :::card 
-- **Fast ignition**
-- Less, or **no storage cost**(mem only)
-- With **humanizing** account model, users can send tx with **memorable short number**
+- **Thoroughly new chain**, modern design with high tps
+- Written in go, **not a fork** of any other chain
+- Optional less, or **no storage cost**(mem only)
+- With **humanizing** numeric account model, users can send tx with **memorable short number**
 - **High security** with Sheet and Vault(Block) model
 - Powerful and scalable types of tx
 - Support **Multi-Tx**, sending coins to different recipants in the same time
-- Powerful **WebAssembly** VM support based on account state(contract)
+- Powerful **WebAssembly** VM support based on account's contract
 - Contract is **more maintainable** than ethereum
-- **Libp2p(ipfs)** powered p2p networking 
+- **Libp2p(ipfs)** powered p2p networking
+- Support NAT & UPnP, no public IP requirement
 - Available **anonymous** address for saving balance
-- Using the **schnorr signature**, allowing Multi-Sig when sending and receiving
-- **Fee Destory Policy** keeps the mainnet coin NG's value
-- Using swagger style **restful API**, be friendly to the developers
+- Using the **schnorr signature**, allowing **Multi-Sig** when sending and receiving
+- **Fee Burnt Policy** keeps the mainnet coin NG's value
+- Using **JSON RPC v2 API**, be friendly to the developers
 
 :::
 
