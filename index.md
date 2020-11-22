@@ -187,7 +187,7 @@ Hawkhover will be released after ngcore's beta period
 ![](/preview_dark.png)
 :::
 
-<slide class="bg-white aligncenter">
+<slide class="aligncenter size-60">
 
 ## Diff between **BTC** & NGIN
 
@@ -200,7 +200,7 @@ Hawkhover will be released after ngcore's beta period
 - ... 
 
 
-<slide class="bg-white aligncenter">
+<slide class="aligncenter size-60">
 
 ## Diff between **ETH** & NGIN
 
@@ -213,7 +213,7 @@ Hawkhover will be released after ngcore's beta period
 - No EVM，and NGIN assembles more common WebAssembly VM, with which developers can create their app with asm.js, rust, kotlin, c, c++ etc.
 - ...
 
-<slide class="bg-white aligncenter">
+<slide class="aligncenter">
 
 ## Life circle of a WASM contract
 
@@ -233,7 +233,7 @@ stateDiagram-v2
     }
 ```
 
-<slide class="bg-white aligncenter">
+<slide class="aligncenter">
 
 ## Steps to build and deploy a WASM contract
 
