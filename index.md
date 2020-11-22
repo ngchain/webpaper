@@ -28,12 +28,12 @@ plugins:
 
 :::div {.content-left}
 
-## Features {.text.text-shadow}
+# Features {.text.text-shadow}
 
 ---
 
 :::card 
-- **Thoroughly new chain**, modern design with high tps
+- **Thoroughly new chain**, modern design from scratch with high tps
 - Written in go, **not a fork** of any other chain
 - Optional less, or **no storage cost**(mem only)
 - With **humanizing** numeric account model, users can send tx with **memorable short number**
@@ -49,7 +49,14 @@ plugins:
 - **Fee Burnt Policy** keeps the mainnet coin NG's value
 - Using **JSON RPC v2 API**, be friendly to the developers
 
+
 :::
+
+- Auto switch to the best one when chain branching
+- Addresses are for **receiving** coins only
+- Require register an account on chain for **sending**
+- Support **zero fee** transaction
+- ...
 
 ![](/davinci.png)
 
@@ -58,7 +65,7 @@ plugins:
 
 <slide class="bg-white aligncenter">
 
-## Structure {.text-shadow}
+# Structure {.text-shadow}
 
 ---
 
@@ -83,22 +90,25 @@ sequenceDiagram
     Tx ->> WebAssembly: Tigger events(Transaction)
 ```
 
-<slide class="bg-white aligncenter">
+<slide class="aligncenter">
 
 :::div {.content-left}
 
-## ngCore
+# [ngcore](https://github.com/ngchain/ngcore)
 
+License\: {.text-subtitle}
+- GPLv3 for all pre-release version (under v0.1.0)
+- MIT for all version after release
 ---
 
-ngCore is the third daemon on NGIN。
+"ngcore" is the third-version full-node daemon on NGIN
 
-Concurrently, the ngBiz is a new try for union chain based on ngCore's codebase, within which we use PBFT replacing PoW consensus.
+Concurrently, the "ngbiz" is a new try for union chain based on ngcore's codebase, within which we use PBFT replacing PoW consensus.
 
 :::
 
 :::div {.content-right}
-The first two versions are ngind(based on go-ethereum) and ngd/ngdaemon(published on internal git repo not github)
+The first two versions are "ngind"(based on go-ethereum) and "ngd"(aka ngdaemon, published on internal git repo not github)
 Initially, NGIN project was aiming to build **an internet serach engine**(like google) ecosystem based on blockchain
 But ngind was soon deprecated due to the origin Russian team's plan.
 And then ngd/ngdaemon's team continued their project but then it was also deprecated before releasing because of the team broke up.
@@ -110,6 +120,47 @@ Now, ngcore is on alpha period.
 
 :::
 :::
+
+<slide :class="size-50">
+
+## [WASMan](https://github.com/C0MM4ND/wasman)
+
+License\: MIT
+
+---
+
+
+WASMan(WebAssembly Manager) is another wasm interpreter engine for gophers and blockchain.
+
+
+Currently, WASMan has been assembled into the ngcore's ngstate module, acting as the contract backend, 
+which means ngcore has already be able to run webassembly contracts on blockchain.
+
+:::div {.content-left}
+
+Features
+- All-in-One W3C standard webassembly interpreter
+- Support the toll(gas) station design, which is necessary under blockchain environment
+- Provide cli tool for testing
+
+:::
+
+:::div {.text-pull-right}
+
+Some webassembly examples on rust!
+
+- hostbytes [source](https://github.com/C0MM4ND/minimum-wasm-rs/tree/master/hostbytes) 
+&rarr; [runtime](https://github.com/C0MM4ND/wasman/tree/master/examples/hostbytes){.text-intro}
+
+- hoststring [source](https://github.com/C0MM4ND/minimum-wasm-rs/tree/master/hoststring) 
+&rarr; [runtime](https://github.com/C0MM4ND/wasman/tree/master/examples/hoststring)
+
+- log [source](https://github.com/C0MM4ND/minimum-wasm-rs/tree/master/log)
+&rarr; [runtime](https://github.com/C0MM4ND/wasman/tree/master/examples/log)
+
+- numeric [source](https://github.com/C0MM4ND/minimum-wasm-rs/tree/master/numeric)
+
+
 
 <slide class="bg-white aligncenter">
 
@@ -144,7 +195,7 @@ Hawkhover will be released after ngcore's beta period
 
 - Goal of NGIN, not creating any crypto currency or building a new payment method, is maintaining a decentrialized application engine with reliable blockchain ecosystem
 - Using number account, not garbled string. So more convenient.
-- Using Schnorr signature，not ECDSA: [Schnorr vs ECDSA](https://bitcoin.stackexchange.com/questions/77234/schnorr-vs-ecdsa)
+- Using Schnorr signature，not ECDSA\: [Schnorr vs ECDSA](https://bitcoin.stackexchange.com/questions/77234/schnorr-vs-ecdsa)
 - No half-life period, NGIN using Fee Destory Policy to keep the value of mainnet coin.
 - ... 
 
@@ -192,6 +243,7 @@ stateDiagram-v2
 stateDiagram-v2
     [*] --> Rust/C: write source code
     Rust/C --> WebAssebmlyBinaryFile: compile with the correct toolchain
+    WebAssebmlyBinaryFile --> WASMan: use WASMan to test your contract
     WebAssebmlyBinaryFile --> AccountContract: upload the binary to the NGIN network with wallet toolset
     AccountContract --> InitializedVM: some maybe need to initialize the context for serving 
     AccountContract --> InitializedVM: some dont need any action
