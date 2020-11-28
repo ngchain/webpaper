@@ -123,7 +123,7 @@ Now, ngcore is on alpha period.
 
 <slide :class="size-50">
 
-## [WASMan](https://github.com/C0MM4ND/wasman)
+# [WASMan](https://github.com/C0MM4ND/wasman)
 
 License\: MIT
 
@@ -172,7 +172,7 @@ Some webassembly examples on rust!
 
 :::div {.content-right}
 
-### Hawkhover
+# Hawkhover
 
 ---
 
